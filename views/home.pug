@@ -15,7 +15,7 @@ html(lang = en)
 			link(href = "/stylesheets/home.css" rel = "stylesheet" type="text/css")
 			
 
-		body(background = "/images/a.jpg")
+		body
 			nav.navbar.navbar-default(background = "/images/b.jpg")
 				.container-fluid
 					.raw.centered-form
@@ -27,28 +27,41 @@ html(lang = en)
 									span.icon-bar
 									span.icon-bar
 									span.icon-bar
-
-								h1 connect
+								//img(src = "/images/logo.jpg")
+								h1 CONNECT
 							div.collapse.navbar-collapse(id = "mainNavBar")
 								ul.nav.navbar-nav
-									table(cellspacing = "1" role = "presentation")
-										tbody
-											
-												td
-													
-													a(href = "/login") Login
+									
+									button.btn(type = "submit" value = "home") Home 
+									button.btn(type = "submit" value = "about") About Us
+									button.btn(type = "submit" value = "contact us") Contact Us
 											
 			.container-fluid
 				.raw.centered-form
 					.col-sm-3
 					.col-sm-2
-						h4 Connect helps you connect and share with the people in your life.
+						h3 Welcome to CONNECT.
+
+						h4 CONNECT helps you to Connect with your friends — and other fascinating people. 
+						h4 Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
+						
 						//img(src = "/images/a.jpg")
 					.col-sm-2
 					.col-sm-2
-						h3 Create an account
-						h5 It's free and always will be.
-						a(href = "/register") Create an account
+						form(action = "/login" method = "get")
+										
+							h5 Already Member?
+											
+							button.btn.btn-block(type = "submit" value = "login") Login
+						
+						form(action = "/register" method = "get")
+							h5 New to Connect?
+													
+							button.btn.btn-block(type = "submit" value = "create an account") Create an account
+													
+												
+
+						
 										
 						
 

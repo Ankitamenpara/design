@@ -15,14 +15,30 @@ html(lang = en)
 			link(href = "/stylesheets/home.css" rel = "stylesheet" type="text/css")
 			
 
-		body(background = "/images/a.jpg")
+		body
 			nav.navbar.navbar-default(background = "/images/b.jpg")
-				
+				.container-fluid
+					.raw.centered-form
+						.col-sm-3
+							
+						.col-sm-6
+							.navbar-header
+								button.navbar-toggle(type = "button " data-toggle = "collapse" data-target = "#mainNavBar")
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+
+								h1 CONNECT
+							div.collapse.navbar-collapse(id = "mainNavBar")
+								ul.nav.navbar-nav
+										
 			.container-fluid
 				.raw.centered-form
 					.col-sm-3
 					.col-sm-2
-						h4 Connect helps you connect and share with the people in your life.
+						h3 Welcome to CONNECT.
+						h4 CONNECT helps you to Connect with your friends — and other fascinating people. 
+						h4 Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
 						//img(src = "/images/a.jpg")
 					.col-sm-2
 					.col-sm-2

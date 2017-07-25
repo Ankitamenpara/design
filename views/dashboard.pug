@@ -15,7 +15,7 @@ html(lang = en)
 			link(href = "/stylesheets/home.css" rel = "stylesheet" type="text/css")
 			
 
-		body(background = "/images/a.jpg")
+		body
 			nav.navbar.navbar-default(background = "/images/b.jpg")
 				.container-fluid
 					.raw.centered-form
@@ -32,13 +32,15 @@ html(lang = en)
 							div.collapse.navbar-collapse(id = "mainNavBar")
 								ul.nav.navbar-nav
 									
+									
 			.container-fluid
 				.raw.centered-form
 					.col-sm-3
 					.col-sm-2
-						h4 Connect helps you connect and share with the people in your life. #{result.first_name}
+						h4 Connect helps you connect and share with the people in your life. #{result[0].first_name}
 						
-		
+						form(action = "/logout" method = "post")
+							button.btn.btn-block(type = "submit" value = "logout") Logout
 			
 			
 							

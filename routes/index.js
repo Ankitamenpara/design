@@ -76,9 +76,10 @@ router.get('/dashboard', function(req, res, next) {
 		mongo.connect(url, function(err, db){
 		if(err) throw err
 		db.collection('users').find({first_name : req.session.result[0].first_name}).toArray(function(err, result){
-			
+				
 			if(!result){
 				req.session.reset();
+				
 				res.render('login');
 
 			}else{
@@ -96,7 +97,13 @@ router.get('/dashboard', function(req, res, next) {
 });
  
 router.get('/logout', function(req, res, next) {
-	req.session.reset();
+	
+  	req.session.destroy();
   	res.redirect('/');
 });
+
+router.post('/logout', function(req, res, next) {
+	req.session.destroy();
+  	res.redirect('/');
+ });
 module.exports = router;

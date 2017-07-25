@@ -15,7 +15,7 @@ html(lang = en)
 			link(href = "/stylesheets/home.css" rel = "stylesheet" type="text/css")
 			
 
-		body(background = "/images/a.jpg")
+		body
 			nav.navbar.navbar-default(background = "/images/b.jpg")
 				.container-fluid
 					.raw.centered-form
@@ -28,43 +28,34 @@ html(lang = en)
 									span.icon-bar
 									span.icon-bar
 
-								h1 connect
+								h1 CONNECT
 							div.collapse.navbar-collapse(id = "mainNavBar")
 								ul.nav.navbar-nav
-									form(action = "/login" method = "post")
-										table(cellspacing = "1" role = "presentation")
-											tbody
-												tr
-													td
-												tr
-													td
-												tr
-													td
-												tr
-													td
-
-												tr
-													td
-														lable Email or Phone
-														
-													td
-														lable Password
-												tr
-													td
-														input.form-control.input-sm(type = "text" name = "id" placeholder = "First Name")
-
-													td
-														input.form-control.input-sm(type = "password" name = "password" placeholder = "Password" required)
-													td
-														button.btn.btn-block(type = "submit" value = "Register") Login
-												tr
-													td
-														lable
-													td
-														a(href = "#") forgotten account?
+									
 			.container-fluid
 				.raw.centered-form
 					.col-sm-3
 					.col-sm-2
-						h4 Connect helps you connect and share with the people in your life.
+						h3 Welcome to CONNECT.
+
+						h4 CONNECT helps you to Connect with your friends — and other fascinating people. 
+						h4 Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
+				
+					.col-sm-2
+					.col-sm-2
+						h3 Login
+						form(action = "/login" method = "post")
+							.row
+								.col-xs-12.col-sm-12.col-md-12
+									.form-group
+										input.form-control.input-sm(type = "text" name = "id" placeholder = "First Name" required)
+
+											
+									.form-group
+										input.form-control.input-sm(type = "password" name = "password" placeholder = "Password" required)
+										
+									
+									
+									button.btn.btn-block(type = "submit" value = "Register") Login
+									a(href = "#") forgot password?
 						

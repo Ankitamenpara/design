@@ -115,7 +115,7 @@ select,
 textarea {
   margin: 0;
   font: inherit;
-  color: inherit;
+  color: #ffffff;
 }
 button {
   overflow: visible;
@@ -1085,7 +1085,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
+  color: #ec906c;
   background-color: #f7e5db;
 }
 input,
@@ -1114,6 +1114,11 @@ figure {
 }
 img {
   vertical-align: middle;
+   width: 15%;
+    height: 50px;
+
+    
+
 }
 .img-responsive,
 .thumbnail > img,
@@ -1266,6 +1271,7 @@ h6 .small,
 h1,
 .h1 {
   font-size: 36px;
+  color:#fffefe;
 }
 h2,
 .h2 {
@@ -1274,10 +1280,12 @@ h2,
 h3,
 .h3 {
   font-size: 24px;
+  color:#ec906c;
 }
 h4,
 .h4 {
   font-size: 18px;
+  font-weight: 300;
 }
 h5,
 .h5 {
@@ -3019,7 +3027,7 @@ select[multiple].input-lg {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-image: none;
+  background-color: #ec906c;
   border: 1px solid transparent;
   border-radius: 4px;
 }
