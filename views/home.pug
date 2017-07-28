@@ -27,14 +27,19 @@ html(lang = en)
 									span.icon-bar
 									span.icon-bar
 									span.icon-bar
-								//img(src = "/images/logo.jpg")
-								h1 CONNECT
+								table
+									tr
+										td
+											img(src = "/images/logo1.jpg")
+										td
+									
+											h1 CONNECT 
 							div.collapse.navbar-collapse(id = "mainNavBar")
 								ul.nav.navbar-nav
 									
-									button.btn(type = "submit" value = "home") Home 
-									button.btn(type = "submit" value = "about") About Us
-									button.btn(type = "submit" value = "contact us") Contact Us
+									a.btn(href = "#") Home
+									a.btn(href = "#") About Us
+									a.btn(href = "#") Contact Us
 											
 			.container-fluid
 				.raw.centered-form
@@ -48,16 +53,15 @@ html(lang = en)
 						//img(src = "/images/a.jpg")
 					.col-sm-2
 					.col-sm-2
-						form(action = "/login" method = "get")
-										
-							h5 Already Member?
-											
-							button.btn.btn-block(type = "submit" value = "login") Login
 						
-						form(action = "/register" method = "get")
+							h5 Already Member?
+							a.btn.btn-block(href = "/login") Login				
+							
+						
+						
 							h5 New to Connect?
 													
-							button.btn.btn-block(type = "submit" value = "create an account") Create an account
+							a.btn.btn-block(href = "/register") Create an account
 													
 												
 

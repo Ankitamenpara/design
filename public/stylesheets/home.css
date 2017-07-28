@@ -115,7 +115,7 @@ select,
 textarea {
   margin: 0;
   font: inherit;
-  color: #ffffff;
+  color: #000000;
 }
 button {
   overflow: visible;
@@ -175,6 +175,7 @@ legend {
 }
 textarea {
   overflow: auto;
+  height: 75px;
 }
 optgroup {
   font-weight: bold;
@@ -1085,7 +1086,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #ec906c;
+  color: #ffffff;
   background-color: #f7e5db;
 }
 input,
@@ -1095,12 +1096,15 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  width: 100%;
+ 
 }
 a {
-  color: #337ab7;
+  color: #ffffff;
   text-decoration: none;
 }
 a:hover,
+
 a:focus {
   color: #23527c;
   text-decoration: underline;
@@ -1114,8 +1118,9 @@ figure {
 }
 img {
   vertical-align: middle;
-   width: 15%;
+   margin-top: 20px;
     height: 50px;
+
 
     
 
@@ -1225,9 +1230,11 @@ h1,
 .h1,
 h2,
 .h2,
+
+
 h3,
 .h3 {
-  margin-top: 25px;
+  margin-top: 33px;
   margin-bottom: 10px;
   color: #000000;
 }
@@ -2727,7 +2734,7 @@ select.input-sm {
 }
 textarea.input-sm,
 select[multiple].input-sm {
-  height: auto;
+  height: 75px;
 }
 .form-group-sm .form-control {
   height: 30px;
@@ -3463,7 +3470,7 @@ fieldset[disabled] .btn-link:focus {
   border-radius: 3px;
 }
 .btn-block {
-  display: block;
+  display:inline-block;
   width: 100%;
 }
 .btn-block + .btn-block {
@@ -3523,6 +3530,7 @@ tbody.collapse.in {
 .dropup,
 .dropdown {
   position: relative;
+  color:#ffffff;
 }
 .dropdown-toggle:focus {
   outline: 0;
@@ -4364,7 +4372,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-nav {
     float: right;
-    margin: 0;
+    margin: 30px;
   }
   .navbar-nav > li {
     float: left;
