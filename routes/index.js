@@ -53,19 +53,15 @@ router.post('/register', function(req, res, next) {
 	req.check('password','password is invalid').equals(req.body.confirm_password);
 
 	var errors = req.getValidationResult();
-	console.log(errors);
-	if(errors) {
-		req.session.errors = errors;
-		req.session.success = false;
-		res.redirect('/register');
-	}else {
+	
+	
 	req.session.success = true;
 	var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));	
 	var item = {
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
 		email: req.body.email,
-		password: hash ,
+		password: hash,
 	};
 	console.log(item);
 	mongo.connect(url, function(err, db){
@@ -80,7 +76,7 @@ router.post('/register', function(req, res, next) {
 			})
 		
 	});
-  }
+  
 });
 
 
@@ -147,7 +143,7 @@ router.post('/dashboard', function(req, res, next) {
 				
 				db.close();
 			})
-			})
+})
 	
 	
 
@@ -161,7 +157,11 @@ router.get('/logout', function(req, res, next) {
 
 
 router.post('/logout', function(req, res, next) {
-	req.session.destroy();
+	if(req.session && req.session.result){
+		req.session.destroy();
+  		res.redirect('/');
+  }else{
   	res.redirect('/');
+  }
  });
 module.exports = router;
