@@ -46,7 +46,7 @@ html(lang = en)
 				.raw.centered-form
 					.col-sm-3
 					.col-sm-2
-						h3 Welcome to CONNECT.
+						h3 Welcome to CONNECT
 
 						h4 CONNECT helps you to Connect with your friends — and other fascinating people. 
 						h4 Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.
@@ -63,6 +63,22 @@ html(lang = en)
 							h5 New to Connect?
 													
 							a.btn.btn-block(href = "/register") Create an account
+
+
+			.container
+				.carousel_slide(id = "myCarousel" data-ride = "carousel")
+					ol.carousel-indicators
+						li.active(data-target = "#myCarousel" data-slide-to ="0")
+						li.active(data-target = "#myCarousel" data-slide-to ="1")
+						li.active(data-target = "#myCarousel" data-slide-to ="2")
+					.carousel-inner
+						.item_active
+							img(src ="/images/a.jpg" style = "width:100%")
+						.item
+							img(src ="/images/profile.jpg")
+					a.left_carousel-control(href="#myCarousel" data-slide = "prev")
+						span.glyphicon.glyphicon-chevron-left
+						span.sr-only
 													
 												
 

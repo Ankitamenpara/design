@@ -15,7 +15,7 @@ html(lang = en)
 			link(href = "/stylesheets/home.css" rel = "stylesheet" type="text/css")
 			
 		body
-			nav.navbar.navbar-default(background = "/images/b.jpg")
+			nav.navbar.navbar-default.navbar-static-top(background = "/images/b.jpg")
 				.container-fluid
 					.raw.centered-form
 						.col-sm-3
@@ -45,14 +45,34 @@ html(lang = en)
 								ul.nav.navbar-nav
 									a.btn(href = "/") Home
 									a.btn(href = "#") Notification
-									a.btn(href = "#") Message
-									a.btn(href = "#") Profile
-																		
+									
+									.dropdown
+										button.btn.dropdown-toggle(type = "button" data-toggle="dropdown") Profile
+											span.caret
+										.dropdown-menu
+											a.h5.input-sm(href = "/") Create Page
+											br
+											a.h5.input-sm(href = "#") Create Group
+											br
+											a.h5.input-sm(href = "#") Your Groups
+											br
+											a.h5.input-sm(href = "#") Activity Log
+											br
+											a.h5.input-sm(href = "#") News Feed
+											br
+											a.h5.input-sm(href = "#") Settings
+											br
+											a.h5.input-sm(href = "/logout") Logout
+											
+												
+																					
 			.container-fluid
 				.raw.centered-form
 					.col-sm-3
 					.col-sm-1
 						h4 WelCome, #{result[0].first_name}
+						img(src = "/images/profile.jpg")
+						br
 						a.h5(href = "#") News Feed
 						br
 						a.h5(href = "#") Messengar
@@ -74,19 +94,36 @@ html(lang = en)
 								.col-sm-3
 									
 									textarea(row = 10 name = "textarea" placeholder = "what's in your mind?")
-										
+
+
 									.col-sm-3
 									
 									
 										button.btn(type = "submit" value = "share") Share
 										//h5 #{user}
+
 										if data
 											each row in data
 												h4 #{row.user}
 												h5 #{row.textarea}
 
-
-					.col-sm-1
+					//.col-sm-7
+					//.col-sm-1
 						form(action = "/logout" method = "post")
 							button.btn(type = "submit" value = "logout") Logout
+							
+					
+							
+						
+						
+						
 
+
+					
+						
+					
+
+							
+								
+								
+						

@@ -49,12 +49,12 @@ router.post('/login', function(req, res, next) {
 
 
 router.post('/register', function(req, res, next) {
-	req.check('email', 'Invalid email address').isEmail();
-	req.check('password','password is invalid').equals(req.body.confirm_password);
-
-	var errors = req.getValidationResult();
+	//req.check('email', 'Invalid email address').isEmail();
+	//req.check('password','password is invalid').equals(req.body.confirm_password);
 	
+	//var errors = req.getValidationResult();
 	
+	if(req.body.password===req.body.confirm_password){
 	req.session.success = true;
 	var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));	
 	var item = {
@@ -63,7 +63,7 @@ router.post('/register', function(req, res, next) {
 		email: req.body.email,
 		password: hash,
 	};
-	console.log(item);
+	
 	mongo.connect(url, function(err, db){
 		if(err) throw err
 
@@ -76,7 +76,9 @@ router.post('/register', function(req, res, next) {
 			})
 		
 	});
-  
+  }else{
+  	res.render('register',{error:"incorrect password"})
+  	  }
 });
 
 
@@ -103,7 +105,7 @@ router.get('/dashboard', function(req, res, next) {
 				res.locals.result = result;
 				
 			
-				db.collection('data').find({},{textarea:1,user:1}).toArray(function(err, results){
+				db.collection('data').find({},{textarea:-1,user:1}).toArray(function(err, results){
 				console.log(results);
 				res.render('dashboard',{data : results});
 		
