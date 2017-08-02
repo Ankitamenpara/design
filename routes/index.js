@@ -6,6 +6,16 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('client-sessions');
 var bcrypt = require('bcryptjs');
+var multer = require('multer');
+var storage = multer.diskStorage({
+	destination: function(req,file,cb){
+		cb(null,'uploads')
+	},
+	filename: function(req,file,cb){
+		cb(null,Date.now() + file.originalname);
+	}
+});
+var upload = multer({storage:storage});
 
 mongo.connect(url, function(err, db){
 	if(err) throw err
@@ -13,7 +23,6 @@ mongo.connect(url, function(err, db){
 
 		})
 })
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -56,12 +65,14 @@ router.post('/register', function(req, res, next) {
 	
 	if(req.body.password===req.body.confirm_password){
 	req.session.success = true;
+	
 	var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));	
 	var item = {
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
 		email: req.body.email,
 		password: hash,
+		date: new Date(),
 	};
 	
 	mongo.connect(url, function(err, db){
@@ -105,7 +116,7 @@ router.get('/dashboard', function(req, res, next) {
 				res.locals.result = result;
 				
 			
-				db.collection('data').find({},{textarea:-1,user:1}).toArray(function(err, results){
+				db.collection('data').find({},{textarea:1,user:1,date:1},{$sort:{date:-1}}).toArray(function(err, results){
 				console.log(results);
 				res.render('dashboard',{data : results});
 		
@@ -132,7 +143,8 @@ router.post('/dashboard', function(req, res, next) {
 				
 				var items = {
 					user : req.session.result[0].first_name,
-					textarea: req.body.textarea
+					textarea: req.body.textarea,
+					date:Date(),
 				};
 				
 				mongo.connect(url, function(err, db){
@@ -146,7 +158,11 @@ router.post('/dashboard', function(req, res, next) {
 				db.close();
 			})
 })
-	
+
+router.post('/uploads',upload.any(), function(req, res, next) {
+
+	res.redirect('dashboard');
+ });	
 	
 
 

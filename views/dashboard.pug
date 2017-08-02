@@ -71,7 +71,14 @@ html(lang = en)
 					.col-sm-3
 					.col-sm-1
 						h4 WelCome, #{result[0].first_name}
-						img(src = "/images/profile.jpg")
+						.dropdown
+							button.btn.dropdown-toggle(type = "button" data-toggle="dropdown")
+								img(src = "/images/profile.jpg")
+							.dropdown-menu
+								form(method = "post" action = "/uploads" enctype ="multipart/form-data")
+									input(type ="file" name = "myimage")
+									input(type ="submit" name="submit" value="upload")
+						img(src="/uploads/.jpg")
 						br
 						a.h5(href = "#") News Feed
 						br
@@ -84,8 +91,7 @@ html(lang = en)
 						a.h5(href = "#") Friends lists
 						br
 						a.h5(href = "#") Groups
-			
-			
+					
 						
 
 					form(action = "/dashboard" method = "post")
@@ -105,6 +111,7 @@ html(lang = en)
 										if data
 											each row in data
 												h4 #{row.user}
+
 												h5 #{row.textarea}
 
 					//.col-sm-7
