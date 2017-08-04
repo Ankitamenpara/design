@@ -12,9 +12,31 @@ var storage = multer.diskStorage({
 		cb(null,'uploads')
 	},
 	filename: function(req,file,cb){
-		cb(null,Date.now() + file.originalname);
-	}
-});
+		cb(null,file.originalname);
+		var user = req.session;
+				
+				var items = {
+					user : req.session.result[0].first_name,
+					iname: file.originalname,
+					date:Date(),
+				};
+				
+				mongo.connect(url, function(err, db){
+						if(err) throw err
+				
+						db.collection('profile').insertOne(items, function(err, result){
+						})	
+	
+				
+				
+				db.close();
+			})
+}
+	});
+
+
+
+
 var upload = multer({storage:storage});
 
 mongo.connect(url, function(err, db){
@@ -117,7 +139,7 @@ router.get('/dashboard', function(req, res, next) {
 				
 			
 				db.collection('data').find({},{textarea:1,user:1,date:1},{$sort:{date:-1}}).toArray(function(err, results){
-				console.log(results);
+				
 				res.render('dashboard',{data : results});
 		
 				db.close();
@@ -138,7 +160,8 @@ router.get('/dashboard', function(req, res, next) {
 
 router.post('/dashboard', function(req, res, next) {
 	
-		
+				
+
 				var user = req.session;
 				
 				var items = {
@@ -160,8 +183,40 @@ router.post('/dashboard', function(req, res, next) {
 })
 
 router.post('/uploads',upload.any(), function(req, res, next) {
+	if(req.session && req.session.result){
+	
+		mongo.connect(url, function(err, db){
+		if(err) throw err
+		db.collection('users').find({first_name : req.session.result[0].first_name}).toArray(function(err, result){
+				
+			if(!result){
+				req.session.reset();
+				
+				res.render('login');
 
-	res.redirect('dashboard');
+			}else{
+				res.locals.result = result;
+				
+			
+				db.collection('profile').find({},{iname:1}).toArray(function(err, results){
+				console.log(results);
+				res.render('dashboard',{profile : results});
+		
+				db.close();
+
+				})
+				
+			}
+
+
+		});
+})
+	}else{
+		res.render('login');
+	}
+
+	res.redirect('/dashboard');
+
  });	
 	
 
